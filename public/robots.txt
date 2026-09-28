@@ -1,0 +1,7 @@
+# Ponto Alto – Clube da Música
+# Todo o site pode ser indexado pelos buscadores.
+User-agent: *
+Allow: /
+
+# Quando o site tiver domínio próprio, descomente e ajuste a linha abaixo:
+# Sitemap: https://SEU-DOMINIO/sitemap.xml

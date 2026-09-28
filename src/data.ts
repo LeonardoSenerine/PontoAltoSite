@@ -10,6 +10,9 @@ export const CONTACT = {
 export const whatsLink = (msg?: string) =>
   `https://wa.me/${CONTACT.whatsapp}${msg ? `?text=${encodeURIComponent(msg)}` : ''}`
 
+export const mapsLink = `https://www.google.com/maps/search/?api=1&query=${CONTACT.lat},${CONTACT.lng}`
+export const wazeLink = `https://waze.com/ul?ll=${CONTACT.lat},${CONTACT.lng}&navigate=yes`
+
 export type EventItem = {
   id: string
   title: string
@@ -55,6 +58,14 @@ export const EVENTS: EventItem[] = [
   },
 ]
 
+export const SHOWS = [
+  { src: '/media/video-6.mp4', title: 'Banda ao vivo', desc: 'Bateria no talo, palco aceso' },
+  { src: '/media/video-5.mp4', title: 'Casa cheia', desc: 'Luzes, fumaça e galera cantando' },
+  { src: '/media/video-3.mp4', title: 'Especial MTV', desc: 'A era dos videoclipes' },
+  { src: '/media/video-2.mp4', title: 'Noite no Ponto', desc: 'Mesa cheia e som rolando' },
+  { src: '/media/video-4.mp4', title: 'Brasa & resenha', desc: 'Churrasco antes do show' },
+]
+
 export const PHOTOS = [
   { src: '/media/show-coberto.jpg', alt: 'Público lotando a área coberta durante show' },
   { src: '/media/casa-cheia.jpg', alt: 'Casa cheia à noite, sob as palmeiras' },
@@ -62,13 +73,4 @@ export const PHOTOS = [
   { src: '/media/entrada.jpg', alt: 'Entrada do Ponto Alto iluminada' },
   { src: '/media/amigos-2.jpg', alt: 'Galera reunida no Ponto Alto' },
   { src: '/media/fachada-luzes.jpg', alt: 'Varal de luzes na entrada do Ponto Alto' },
-]
-
-// video-1 é usado no fundo do hero
-export const VIDEOS = [
-  '/media/video-2.mp4',
-  '/media/video-6.mp4',
-  '/media/video-3.mp4',
-  '/media/video-4.mp4',
-  '/media/video-5.mp4',
 ]

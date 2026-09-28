@@ -1,37 +1,48 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import FeatureVideo from './components/FeatureVideo'
-import About from './components/About'
-import Collage from './components/Collage'
-import Highlights from './components/Highlights'
-import FeaturedEvent from './components/FeaturedEvent'
+import Equalizer from './components/Equalizer'
+import Features from './components/Features'
+import Space from './components/Space'
+import Numbers from './components/Numbers'
+import Shows from './components/Shows'
+import Setlist from './components/Setlist'
 import Agenda from './components/Agenda'
 import Gallery from './components/Gallery'
-import Location from './components/Location'
+import CallToAction from './components/CallToAction'
+import Visit from './components/Visit'
 import Footer from './components/Footer'
 import Lightbox, { type LightboxContent } from './components/Lightbox'
 import WhatsFloat from './components/WhatsFloat'
+import MobileBar from './components/MobileBar'
+import { useReveal } from './useReveal'
 
 export default function App() {
   const [lightbox, setLightbox] = useState<LightboxContent | null>(null)
+  const openImage = (src: string, alt: string) => setLightbox({ type: 'image', src, alt })
+  const openVideo = (src: string) => setLightbox({ type: 'video', src })
+
+  useReveal()
 
   return (
     <>
       <Navbar />
       <main>
         <Hero />
-        <FeatureVideo onPlay={(src) => setLightbox({ type: 'video', src })} />
-        <About />
-        <Collage />
-        <Highlights />
-        <FeaturedEvent onOpen={(src, alt) => setLightbox({ type: 'image', src, alt })} />
-        <Agenda onOpen={(src, alt) => setLightbox({ type: 'image', src, alt })} />
-        <Gallery onOpen={setLightbox} />
-        <Location />
+        <Equalizer />
+        <Features />
+        <Space onOpen={openImage} />
+        <Numbers />
+        <Shows onPlay={openVideo} />
+        <Setlist />
+        <Agenda onOpen={openImage} />
+        <Gallery onOpen={openImage} />
+        <CallToAction />
+        <Visit />
       </main>
       <Footer />
       <WhatsFloat />
+      <MobileBar />
       <Lightbox content={lightbox} onClose={() => setLightbox(null)} />
     </>
   )

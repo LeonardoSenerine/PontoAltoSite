@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { delay } from '../useReveal'
 
 const stroke = {
   fill: 'none',
@@ -44,27 +45,25 @@ const ICONS: Record<string, ReactNode> = {
 }
 
 const ITEMS = [
-  { icon: 'guitar', big: 'Rock', small: 'Bandas e tributos' },
-  { icon: 'drum', big: 'Pagode', small: 'Resenhas ao vivo' },
-  { icon: 'mic', big: 'Covers', small: 'Clássicos de sempre' },
-  { icon: 'beer', big: 'Bar', small: 'Gelada o tempo todo' },
-  { icon: 'palm', big: 'Ar livre', small: 'Área externa' },
+  { icon: 'guitar', title: 'Rock ao vivo', text: 'Bandas e tributos no palco' },
+  { icon: 'mic', title: 'Covers', text: 'Aerosmith, CBJR, SOAD e mais' },
+  { icon: 'drum', title: 'Pagode', text: 'Resenhas que vão até tarde' },
+  { icon: 'beer', title: 'Bar', text: 'Gelada o tempo todo' },
+  { icon: 'palm', title: 'Ar livre', text: 'Palmeiras e varal de luzes' },
 ]
 
-export default function Highlights() {
+export default function Features() {
   return (
-    <section className="highlights">
-      <div className="container highlights__row">
-        {ITEMS.map((it) => (
-          <div key={it.big} className="highlight">
-            <span className="highlight__icon">{ICONS[it.icon]}</span>
-            <div>
-              <p className="display display--sm">{it.big}</p>
-              <p className="highlight__small">{it.small}</p>
-            </div>
-          </div>
+    <section id="destaques" className="features">
+      <ul className="container features__list">
+        {ITEMS.map((it, i) => (
+          <li key={it.title} className="feature reveal" style={delay(i * 0.08)}>
+            <span className="feature__icon">{ICONS[it.icon]}</span>
+            <h3>{it.title}</h3>
+            <p>{it.text}</p>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   )
 }

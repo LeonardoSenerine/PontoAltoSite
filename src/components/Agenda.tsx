@@ -1,24 +1,27 @@
+import SectionHead from './SectionHead'
 import type { EventItem } from '../data'
 import { CONTACT, whatsLink } from '../data'
 import { formatDate, pastEvents, upcomingEvents } from '../events'
+import { delay } from '../useReveal'
 
 type Props = { onOpen: (src: string, alt: string) => void }
 
-function EventCard({ e, past, onOpen }: { e: EventItem; past: boolean; onOpen: Props['onOpen'] }) {
+function EventCard({ e, past, onOpen, i }: { e: EventItem; past: boolean; onOpen: Props['onOpen']; i: number }) {
   const d = formatDate(e.date)
   return (
-    <article className={`event ${past ? 'event--past' : ''}`}>
-      <button className="event__flyer" onClick={() => onOpen(e.flyer, `Flyer ${e.title}`)}>
+    <article className={`event reveal ${past ? 'event--past' : ''}`} style={delay(i * 0.1)}>
+      <button className="event__flyer" onClick={() => onOpen(e.flyer, `Flyer ${e.title}`)} aria-label={`Ampliar flyer de ${e.title}`}>
         <img src={e.flyer} alt={`Flyer ${e.title}`} loading="lazy" />
         <span className="event__genre">{e.genre}</span>
+        {past && <span className="event__stamp">Já rolou</span>}
       </button>
       <div className="event__body">
         <div className="event__date">
-          <span className="display display--md">{d.day}</span>
-          <span>{d.month} {d.year}</span>
+          <strong>{d.day}</strong>
+          <span>{d.month}</span>
         </div>
         <div>
-          <h3 className="display display--sm">{e.title}</h3>
+          <h3>{e.title}</h3>
           <p className="event__meta">{d.weekday} · {d.time}</p>
           <p className="event__meta">{e.subtitle}</p>
         </div>
@@ -44,22 +47,24 @@ export default function Agenda({ onOpen }: Props) {
   return (
     <section id="agenda" className="section agenda">
       <div className="container">
-        <div className="section__head">
-          <h2 className="display display--lg">Agenda</h2>
-          <span className="section__line" />
-        </div>
+        <SectionHead tape="anota aí" title="Próximos shows" />
 
         {upcoming.length > 0 ? (
           <div className="events">
-            {upcoming.map((e) => (
-              <EventCard key={e.id} e={e} past={false} onOpen={onOpen} />
+            {upcoming.map((e, i) => (
+              <EventCard key={e.id} e={e} i={i} past={false} onOpen={onOpen} />
             ))}
           </div>
         ) : (
-          <div className="agenda__empty">
-            <p className="display display--sm">Novas datas em breve</p>
-            <p>Chama no WhatsApp para saber o próximo rolê e colocar seu nome na lista.</p>
-            <a className="btn" href={whatsLink('Olá! Qual é o próximo evento do Ponto Alto?')} target="_blank" rel="noopener">
+          <div className="agenda__empty reveal">
+            <span className="agenda__amp" aria-hidden="true">
+              <span /><span /><span /><span />
+            </span>
+            <div>
+              <p className="agenda__empty-title">Line-up em montagem</p>
+              <p>Os amplificadores estão esquentando. Chama no WhatsApp pra saber o próximo show e colocar seu nome na lista.</p>
+            </div>
+            <a className="btn" href={whatsLink('Olá! Qual é o próximo show do Ponto Alto?')} target="_blank" rel="noopener">
               {CONTACT.phoneDisplay} <span className="btn__arrow">›</span>
             </a>
           </div>
@@ -67,10 +72,10 @@ export default function Agenda({ onOpen }: Props) {
 
         {past.length > 0 && (
           <>
-            <h3 className="agenda__subtitle">Já rolou por aqui</h3>
+            <p className="agenda__subtitle reveal">Já passou por aqui</p>
             <div className="events">
-              {past.map((e) => (
-                <EventCard key={e.id} e={e} past onOpen={onOpen} />
+              {past.map((e, i) => (
+                <EventCard key={e.id} e={e} i={i} past onOpen={onOpen} />
               ))}
             </div>
           </>
