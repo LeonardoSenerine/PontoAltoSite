@@ -6,10 +6,11 @@ const LEFT = [
   { href: '/#espaco', label: 'O espaço' },
   { href: '/#shows', label: 'Shows' },
   { href: '/#agenda', label: 'Agenda' },
+  { href: '/#galeria', label: 'Galeria' },
 ]
 const RIGHT = [
-  { href: '/#galeria', label: 'Galeria' },
   { href: '/#visite', label: 'Como chegar' },
+  { href: '/#tocar', label: 'Quero tocar' },
 ]
 
 const BRAND = 'Ponto Alto'

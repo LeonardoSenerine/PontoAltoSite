@@ -42,7 +42,7 @@ export default function Numbers() {
         {ITEMS.map((it, i) => (
           <div key={it.label} className="ticket reveal reveal--drop" style={delay(i * 0.12)}>
             <div className="ticket__main">
-              <span className="ticket__brand">Ponto Alto · Admit one</span>
+              <span className="ticket__brand" aria-hidden="true">Ingresso · Ponto Alto</span>
               <strong>
                 {it.prefix}
                 <CountUp to={it.value} />

@@ -16,6 +16,7 @@ import Lightbox, { type LightboxContent } from './components/Lightbox'
 import WhatsFloat from './components/WhatsFloat'
 import MobileBar from './components/MobileBar'
 import Booking from './components/Booking'
+import Bar from './components/Bar'
 import StructuredData from './components/StructuredData'
 import { useReveal } from './useReveal'
 
@@ -37,11 +38,12 @@ export default function App() {
         <Numbers />
         <Shows onPlay={openVideo} />
         <Setlist />
-        <Agenda onOpen={openImage} />
         <Gallery onOpen={openImage} />
+        <Bar />
+        <Agenda onOpen={openImage} />
         <Booking />
-        <CallToAction />
         <Visit />
+        <CallToAction />
       </main>
       <Footer />
       <WhatsFloat />

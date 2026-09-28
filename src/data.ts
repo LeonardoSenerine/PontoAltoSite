@@ -67,6 +67,14 @@ export const EVENTS: EventItem[] = [
   },
 ]
 
+// Conteúdo provisório: confirmar os itens do bar com o cliente antes de publicar como definitivo.
+export const BAR_MENU = [
+  { title: 'Cervejas', icon: 'beer', items: ['Long neck trincando', 'Garrafa 600 ml pra dividir', 'Balde com a galera'] },
+  { title: 'Drinks', icon: 'drink', items: ['Caipirinha e caipiroska', 'Gin tônica', 'Drinks da casa'] },
+  { title: 'Porções', icon: 'fries', items: ['Batata frita', 'Calabresa acebolada', 'Frango a passarinho'] },
+  { title: 'Comida', icon: 'grill', items: ['Espetinhos na brasa', 'Lanches', 'Pratos pra dividir'] },
+]
+
 export const SHOWS = [
   { src: '/media/video-6.mp4', title: 'Banda ao vivo', desc: 'Bateria no talo, palco aceso' },
   { src: '/media/video-5.mp4', title: 'Casa cheia', desc: 'Luzes, fumaça e galera cantando' },

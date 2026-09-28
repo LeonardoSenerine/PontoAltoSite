@@ -18,20 +18,20 @@ export default function Setlist() {
         <div className="setlist__text">
           <Tape className="reveal">já subiu no palco</Tape>
           <h2 className="title title--xl reveal" style={delay(0.1)}>
-            O setlist
+            Quem já tocou
             <br />
-            <span className="accent">do Ponto</span>
+            <span className="accent">no Ponto</span>
           </h2>
           <p className="reveal" style={delay(0.2)}>
-            Tributo, cover, pagode e festa temática. Cada noite tem a sua cara, e a lista só
-            cresce. Quem vai subir no palco na próxima?
+            Tributos, covers, pagode e festa temática que já passaram pelo palco. Cada noite tem a
+            sua cara, e a lista só cresce. Quem vai subir na próxima?
           </p>
         </div>
 
         <div className="paper reveal reveal--drop" style={delay(0.15)}>
           <span className="paper__tape paper__tape--l" />
           <span className="paper__tape paper__tape--r" />
-          <p className="paper__head">Setlist · Ponto Alto</p>
+          <p className="paper__head">Já passou pelo palco</p>
           <ol className="paper__list">
             {SONGS.map((s, i) => (
               <li key={s.name} className="reveal" style={delay(0.35 + i * 0.12)}>

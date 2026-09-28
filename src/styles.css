@@ -190,7 +190,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
   border: 1px solid rgba(255, 255, 255, .14);
   box-shadow: 0 40px 80px rgba(0, 0, 0, .65);
 }
-.hero__video video { width: 100%; height: 100%; object-fit: cover; }
+.hero__video video, .hero__video img { width: 100%; height: 100%; object-fit: cover; }
 .hero__disc {
   position: absolute; right: -40px; top: 50%; z-index: 1;
   width: 380px; aspect-ratio: 1; margin-top: -190px; border-radius: 50%;
@@ -537,6 +537,34 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .hero__lead strong { color: #fff; }
 .hero__price { display: inline-block; margin: -14px 0 30px; padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; color: var(--ink); background: var(--accent); }
 
+/* ---------- Bar: quadro do balcão ---------- */
+.bar { overflow: hidden; }
+.bar__grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; }
+.bar__text .title { margin-bottom: 22px; }
+.bar__text p { color: #cfcfcf; max-width: 440px; margin-bottom: 30px; }
+.board {
+  position: relative;
+  padding: 36px 38px 28px;
+  border-radius: 10px;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, .05), transparent 60%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, .012) 0 2px, transparent 2px 7px),
+    #1b1d1b;
+  border: 12px solid #5a3a22;
+  box-shadow: inset 0 0 0 2px #3e2716, inset 0 0 40px rgba(0, 0, 0, .6), 0 30px 60px rgba(0, 0, 0, .55);
+  transform: rotate(1deg);
+}
+.board__head { font-family: var(--script); font-size: 30px; color: #f4efe6; text-align: center; margin: 0 0 22px; transform: rotate(-2deg); }
+.board__head::after { content: ''; display: block; width: 120px; height: 3px; margin: 8px auto 0; border-radius: 2px; background: var(--accent); }
+.board__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+.board__icon { display: block; width: 36px; height: 36px; color: var(--accent); margin-bottom: 6px; }
+.board__icon svg { width: 100%; height: 100%; }
+.board__cat h3 { font-family: var(--script); font-size: 24px; color: var(--accent); margin-bottom: 6px; }
+.board__cat ul { display: grid; gap: 4px; }
+.board__cat li { font-size: 14px; color: #e4e0d8; padding-left: 16px; position: relative; }
+.board__cat li::before { content: '•'; position: absolute; left: 2px; color: var(--accent); }
+.board__foot { margin: 24px 0 0; text-align: right; font-family: var(--script); font-size: 15px; color: #a9a49b; }
+
 /* ---------- Quer tocar no Ponto Alto? ---------- */
 .booking { background: var(--bg-2); }
 .booking__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
@@ -734,6 +762,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
   .spots li:last-child .spot { aspect-ratio: 16 / 9; }
   .setlist__grid { grid-template-columns: 1fr; gap: 60px; }
   .booking__grid { grid-template-columns: 1fr; gap: 40px; }
+  .bar__grid { grid-template-columns: 1fr; gap: 50px; }
   .numbers__grid { gap: 20px; }
   .visit { flex-direction: column; align-items: stretch; padding: 0; min-height: 0; }
   .visit__map { position: relative; height: 340px; order: 2; }
@@ -759,6 +788,8 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
   .eq { height: 80px; }
   .paper { padding: 36px 26px 28px; }
   .paper__name { font-size: 20px; }
+  .board { padding: 28px 22px 22px; border-width: 9px; }
+  .board__grid { grid-template-columns: 1fr; }
   .visit__main { padding: 34px 24px; }
   .visit__stub { width: 52px; }
   .visit__address { font-size: 17px; }

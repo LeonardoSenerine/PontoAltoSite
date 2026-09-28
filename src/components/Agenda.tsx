@@ -1,6 +1,6 @@
 import SectionHead from './SectionHead'
 import type { EventItem } from '../data'
-import { CONTACT, whatsLink } from '../data'
+import { whatsLink } from '../data'
 import { formatDate, pastEvents, upcomingEvents } from '../events'
 import { delay } from '../useReveal'
 
@@ -61,11 +61,11 @@ export default function Agenda({ onOpen }: Props) {
               <span /><span /><span /><span />
             </span>
             <div>
-              <p className="agenda__empty-title">Line-up em montagem</p>
-              <p>Os amplificadores estão esquentando. Chama no WhatsApp pra saber o próximo show e colocar seu nome na lista.</p>
+              <p className="agenda__empty-title">A próxima noite ainda está sendo montada</p>
+              <p>Quer saber assim que sair? Entra na lista pelo WhatsApp que a gente te avisa do próximo show.</p>
             </div>
-            <a className="btn" href={whatsLink('Olá! Qual é o próximo show do Ponto Alto?')} target="_blank" rel="noopener">
-              {CONTACT.phoneDisplay} <span className="btn__arrow">›</span>
+            <a className="btn" href={whatsLink('Olá! Quero entrar na lista e saber do próximo show do Ponto Alto.')} target="_blank" rel="noopener">
+              Entrar na lista <span className="btn__arrow">›</span>
             </a>
           </div>
         )}

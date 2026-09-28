@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { mapsLink, whatsLink } from '../data'
 import { formatDate, upcomingEvents } from '../events'
 
@@ -56,7 +57,22 @@ function HeroText() {
   )
 }
 
+/** O vídeo do hero só aparece no desktop; no celular nem é baixado. */
+function useDesktop() {
+  const [desktop, setDesktop] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 961px)')
+    const update = () => setDesktop(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+  return desktop
+}
+
 export default function Hero() {
+  const desktop = useDesktop()
+
   return (
     <section id="inicio" className="hero">
       <img className="hero__bg" src="/media/casa-cheia.jpg" alt="" />
@@ -72,9 +88,13 @@ export default function Hero() {
           </div>
 
           <div className="hero__video">
-            <video autoPlay muted loop playsInline poster="/media/show-coberto.jpg">
-              <source src="/media/video-6.mp4" type="video/mp4" />
-            </video>
+            {desktop ? (
+              <video autoPlay muted loop playsInline poster="/media/show-coberto.jpg">
+                <source src="/media/video-6.mp4" type="video/mp4" />
+              </video>
+            ) : (
+              <img src="/media/show-coberto.jpg" alt="" />
+            )}
           </div>
 
           <figure className="hero__card">
