@@ -3,5 +3,4 @@
 User-agent: *
 Allow: /
 
-# Quando o site tiver domínio próprio, descomente e ajuste a linha abaixo:
-# Sitemap: https://SEU-DOMINIO/sitemap.xml
+Sitemap: https://ponto-alto-site-omega.vercel.app/sitemap.xml
