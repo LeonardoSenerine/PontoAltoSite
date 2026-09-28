@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { mapsLink, whatsLink } from '../data'
 import { formatDate, upcomingEvents } from '../events'
 
@@ -31,7 +30,7 @@ function HeroText() {
           >
             Garantir ingresso <span className="btn__arrow">›</span>
           </a>
-          <a href="#agenda" className="btn btn--ghost btn--lg">Ver agenda</a>
+          <a href="#agenda" className="hero__link">Ver agenda</a>
         </div>
       </div>
     )
@@ -39,73 +38,45 @@ function HeroText() {
 
   return (
     <div className="hero__text">
-      <p className="kicker hero__kicker">Clube da Música · Itatiba, SP</p>
+      <p className="kicker hero__kicker">Ponto Alto · Clube da Música · Itatiba, SP</p>
       <h1 className="hero__title">
         Aumenta
         <br />
         o som<span className="accent">.</span>
       </h1>
-      <p className="hero__lead">
-        Bandas ao vivo, tributos, resenha de pagode e arraial. Tudo debaixo das palmeiras, com a
-        gelada na mão.
-      </p>
+      <p className="hero__lead">Bandas ao vivo, tributos, pagode e noites que pedem volume.</p>
       <div className="btn-row hero__actions">
         <a href="#agenda" className="btn btn--lg">Ver agenda <span className="btn__arrow">›</span></a>
-        <a href={mapsLink} target="_blank" rel="noopener" className="btn btn--ghost btn--lg">Como chegar</a>
+        <a href={mapsLink} target="_blank" rel="noopener" className="hero__link">Como chegar</a>
       </div>
     </div>
   )
 }
 
-/** O vídeo do hero só aparece no desktop; no celular nem é baixado. */
-function useDesktop() {
-  const [desktop, setDesktop] = useState(false)
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 961px)')
-    const update = () => setDesktop(mq.matches)
-    update()
-    mq.addEventListener('change', update)
-    return () => mq.removeEventListener('change', update)
-  }, [])
-  return desktop
-}
-
 export default function Hero() {
-  const desktop = useDesktop()
+  const hasNext = upcomingEvents().length > 0
 
   return (
     <section id="inicio" className="hero">
-      <img className="hero__bg" src="/media/casa-cheia.jpg" alt="" />
-      <div className="hero__shade" />
+      <div className="grain" />
 
-      <div className="container hero__grid">
-        <HeroText />
-
-        <div className="hero__media" aria-hidden="true">
-          {/* Disco de vinil girando atrás do vídeo */}
-          <div className="hero__disc">
-            <span className="hero__disc-label" />
-          </div>
-
-          <div className="hero__video">
-            {desktop ? (
-              <video autoPlay muted loop playsInline poster="/media/video-6.jpg">
-                <source src="/media/video-6.mp4" type="video/mp4" />
-              </video>
-            ) : (
-              <img src="/media/show-coberto.jpg" alt="" />
-            )}
-          </div>
-
-          <figure className="hero__card">
-            <img src="/media/amigos-2.jpg" alt="" />
-            <figcaption>
-              <strong>Casa cheia</strong>
-              <span>toda noite de show</span>
-            </figcaption>
-          </figure>
-        </div>
+      {/* Foto de show como material gráfico: sem moldura, sangrando pela direita e por baixo */}
+      <div className="hero__photo" aria-hidden="true">
+        <img className="hero__photo-glow" src="/media/show-coberto.jpg" alt="" />
+        <img className="hero__photo-img" src="/media/show-coberto.jpg" alt="" />
+        <p className="hero__stamp">
+          <strong>Casa cheia.</strong>
+          <span>toda noite de show</span>
+        </p>
       </div>
+
+      <div className="container hero__content">
+        <HeroText />
+      </div>
+
+      <a href="#agenda" className="hero__next">
+        <span className="hero__next-arrow">↓</span> {hasNext ? 'Próximo show' : 'Agenda de shows'}
+      </a>
     </section>
   )
 }

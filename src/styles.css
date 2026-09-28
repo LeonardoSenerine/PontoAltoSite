@@ -160,58 +160,59 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .nav--open .nav__toggle span:nth-child(2) { opacity: 0; }
 .nav--open .nav__toggle span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero (pôster de show) ---------- */
 .hero {
-  position: relative; overflow: hidden;
+  position: relative; overflow-x: clip;
   min-height: 100vh; min-height: 100svh;
   display: flex; align-items: center;
-  padding: 120px 0 90px;
+  padding: 120px 0 110px;
   background: var(--black);
+  z-index: 1;
 }
-.hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(.4) brightness(.45); }
-.hero__shade {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 45% 60% at 75% 50%, rgba(243, 154, 30, .22), transparent 70%),
-    linear-gradient(90deg, rgba(8, 8, 8, .92) 0%, rgba(8, 8, 8, .7) 45%, rgba(8, 8, 8, .45) 100%),
-    linear-gradient(to bottom, transparent 80%, var(--bg) 100%);
-}
-.hero__grid { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; }
+.hero__content { position: relative; z-index: 2; }
+.hero__text { max-width: 560px; }
 .hero__kicker { margin-bottom: 18px; }
 .hero__title { font-family: var(--display); text-transform: uppercase; font-size: clamp(60px, 8.6vw, 124px); line-height: .9; color: #fff; margin-bottom: 26px; }
-.hero__lead { max-width: 470px; color: #d6d6d6; font-size: 17px; margin-bottom: 34px; }
+.hero__lead { max-width: 440px; color: #d6d6d6; font-size: 18px; margin-bottom: 34px; }
+.hero__actions { align-items: center; gap: 22px; }
+.hero__link { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #ddd; border-bottom: 1px solid rgba(255, 255, 255, .35); padding-bottom: 3px; transition: color .2s, border-color .2s; }
+.hero__link:hover { color: var(--accent); border-color: var(--accent); }
 
-/* Lado direito: vídeo vertical + disco atrás + card de foto */
-.hero__media { position: relative; height: 580px; }
-.hero__video {
-  position: absolute; left: 50%; top: 0; z-index: 2;
-  width: 310px; height: 100%; margin-left: -175px;
-  border-radius: 26px; overflow: hidden; background: #000;
-  border: 1px solid rgba(255, 255, 255, .14);
-  box-shadow: 0 40px 80px rgba(0, 0, 0, .65);
+/* Foto: ~42% da direita, sem moldura, sangrando pela direita e um pouco por baixo */
+.hero__photo { position: absolute; top: 0; right: 0; bottom: -80px; width: 44%; z-index: 1; }
+.hero__photo-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 55% 40%;
+  filter: contrast(1.08) saturate(1.1);
+  -webkit-mask: linear-gradient(to right, transparent 0, #000 28%), linear-gradient(to top, transparent 0, #000 22%);
+  -webkit-mask-composite: source-in;
+          mask: linear-gradient(to right, transparent 0, #000 28%), linear-gradient(to top, transparent 0, #000 22%);
+          mask-composite: intersect;
 }
-.hero__video video, .hero__video img { width: 100%; height: 100%; object-fit: cover; }
-.hero__disc {
-  position: absolute; right: -40px; top: 50%; z-index: 1;
-  width: 380px; aspect-ratio: 1; margin-top: -190px; border-radius: 50%;
-  display: grid; place-items: center;
-  background:
-    conic-gradient(from 20deg, transparent 0 10%, rgba(255, 255, 255, .12) 14%, transparent 20% 55%, rgba(255, 255, 255, .08) 60%, transparent 66%),
-    repeating-radial-gradient(circle, #1c1c1c 0 1.5px, #0c0c0c 1.5px 3px);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, .14), 0 0 60px rgba(243, 154, 30, .25), 0 30px 70px rgba(0, 0, 0, .6);
+/* A luz da foto "vaza" para o fundo preto */
+.hero__photo-glow {
+  position: absolute; top: 5%; right: 10%; width: 110%; height: 90%;
+  object-fit: cover; filter: blur(70px) saturate(1.6) brightness(.8); opacity: .45;
+  pointer-events: none;
 }
-.hero__disc-label { width: 34%; aspect-ratio: 1; border-radius: 50%; background: var(--accent) url('/media/logo.jpg') center / cover; box-shadow: 0 0 0 5px #0c0c0c; }
-.hero__card {
-  position: absolute; left: 0; bottom: 36px; z-index: 3; margin: 0;
-  width: 200px; padding: 10px; border-radius: 16px;
-  background: #f4efe6; color: var(--ink);
-  box-shadow: 0 24px 50px rgba(0, 0, 0, .55);
-  transform: rotate(-5deg);
+.hero__stamp {
+  position: absolute; left: 18%; bottom: 150px; margin: 0;
+  display: flex; flex-direction: column; line-height: .92;
+  text-transform: uppercase; color: #fff;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, .6);
 }
-.hero__card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; }
-.hero__card figcaption { display: flex; flex-direction: column; padding: 10px 4px 4px; line-height: 1.2; }
-.hero__card strong { font-family: var(--display); font-size: 17px; text-transform: uppercase; }
-.hero__card span { font-size: 12px; color: #555; }
+.hero__stamp strong { font-family: 'Anton', var(--display); font-weight: 400; font-size: clamp(44px, 5vw, 72px); letter-spacing: .5px; }
+.hero__stamp span { margin-top: 8px; font-size: 12px; font-weight: 700; letter-spacing: 4px; color: var(--accent); }
+
+.hero__next {
+  position: absolute; left: 50%; bottom: 30px; z-index: 2; transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #cfcfcf;
+  white-space: nowrap;
+}
+.hero__next::before, .hero__next::after { content: ''; width: 40px; height: 1px; background: rgba(255, 255, 255, .25); }
+.hero__next:hover { color: var(--accent); }
+.hero__next-arrow { color: var(--accent); display: inline-block; animation: nudge 1.8s ease-in-out infinite; }
 
 /* Grão de filme por cima das fotos escuras */
 .grain {
@@ -679,7 +680,8 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 @keyframes tilt-in { from { opacity: 0; transform: rotate(14deg) translateY(60px) scale(.9); } to { opacity: 1; transform: rotate(4deg); } }
 @keyframes eq { from { transform: scaleY(.15); } to { transform: scaleY(1); } }
 @keyframes blink { 50% { opacity: .25; } }
-@keyframes disc-in { from { opacity: 0; transform: translateX(-120px) rotate(-180deg); } to { opacity: 1; transform: none; } }
+@keyframes photo-in { from { opacity: 0; transform: scale(1.08); } to { opacity: 1; transform: none; } }
+@keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
 @keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 0 8px var(--black), 0 0 0 10px rgba(243, 154, 30, .6), 0 30px 80px rgba(0, 0, 0, .6); }
@@ -702,9 +704,10 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
   .hero__title { animation: rise .9s var(--ease) .25s both; }
   .hero__lead { animation: rise .9s var(--ease) .45s both; }
   .hero__actions { animation: rise .9s var(--ease) .6s both; }
-  .hero__video { animation: zoom-in 1.1s var(--ease) .3s both; }
-  .hero__disc { animation: disc-in 1.4s var(--ease) .5s both, spin 6s linear 1.9s infinite; }
-  .hero__card { animation: rise 1s var(--ease) .9s both, float 6s ease-in-out 2s infinite; }
+  .hero__photo-img { animation: photo-in 1.4s var(--ease) .1s both; }
+  .hero__photo-glow { animation: fade 2s ease .3s both; }
+  .hero__stamp { animation: rise .9s var(--ease) .9s both; }
+  .hero__next { animation: fade 1s ease 1.2s both; }
   .nav { animation: fade .8s ease both; }
 
   /* Revelar ao rolar. Fill "backwards": ao terminar, o elemento volta aos
@@ -753,8 +756,10 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
   .nav--open .nav__menu { opacity: 1; pointer-events: auto; }
   .nav__side .btn { min-height: 52px; padding: 0 36px; font-size: 14px; }
 
-  .hero__grid { grid-template-columns: 1fr; }
-  .hero__media { display: none; }
+  /* No celular a foto vira fundo do hero, escurecida */
+  .hero__photo { width: 100%; bottom: 0; opacity: .38; }
+  .hero__photo-glow, .hero__stamp { display: none; }
+  .hero__photo-img { -webkit-mask: linear-gradient(to top, transparent 0, #000 45%); mask: linear-gradient(to top, transparent 0, #000 45%); }
 
   .space__head { grid-template-columns: 1fr; gap: 20px; }
   .spots { grid-template-columns: 1fr 1fr; }
