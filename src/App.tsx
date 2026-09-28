@@ -4,7 +4,7 @@ import Hero from './components/Hero'
 import Equalizer from './components/Equalizer'
 import Features from './components/Features'
 import Space from './components/Space'
-import Numbers from './components/Numbers'
+import Tickets from './components/Tickets'
 import Shows from './components/Shows'
 import Setlist from './components/Setlist'
 import Agenda from './components/Agenda'
@@ -35,7 +35,7 @@ export default function App() {
         <Equalizer />
         <Features />
         <Space onOpen={openImage} />
-        <Numbers />
+        <Tickets />
         <Shows onPlay={openVideo} />
         <Setlist />
         <Gallery onOpen={openImage} />
