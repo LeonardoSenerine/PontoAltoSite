@@ -11,6 +11,10 @@ export const whatsLink = (msg?: string) =>
   `https://wa.me/${CONTACT.whatsapp}${msg ? `?text=${encodeURIComponent(msg)}` : ''}`
 
 export const mapsLink = `https://www.google.com/maps/search/?api=1&query=${CONTACT.lat},${CONTACT.lng}`
+export const uberLink =
+  'https://m.uber.com/ul/?action=setPickup&pickup=my_location' +
+  `&dropoff%5Blatitude%5D=${CONTACT.lat}&dropoff%5Blongitude%5D=${CONTACT.lng}` +
+  `&dropoff%5Bnickname%5D=${encodeURIComponent('Ponto Alto – Clube da Música')}`
 export const wazeLink = `https://waze.com/ul?ll=${CONTACT.lat},${CONTACT.lng}&navigate=yes`
 
 export type EventItem = {
@@ -22,6 +26,8 @@ export type EventItem = {
   flyer: string
   lineup: string[]
   prices: string[]
+  /** Menor preço de ingresso em reais (vai para o Google). */
+  priceFrom: number
 }
 
 // Para adicionar um evento novo, basta incluir um item aqui.
@@ -35,6 +41,7 @@ export const EVENTS: EventItem[] = [
     flyer: '/media/flyer-resenha-tk.jpg',
     lineup: ['Tcharlinhos Kroos', 'Part. Sexta Dose', 'Part. Mateus Terra', 'Part. Pegada Nossa'],
     prices: ['Antecipado: homem R$20 · mulher R$10', 'Na hora: homem R$30 · mulher R$20', 'Mulher VIP com nome na lista'],
+    priceFrom: 10,
   },
   {
     id: 'arraial-atormentados',
@@ -45,6 +52,7 @@ export const EVENTS: EventItem[] = [
     flyer: '/media/flyer-arraial.jpg',
     lineup: ['Rollin’ River – tributo Creedence', 'Nega Tonteira – cover Raimundos', 'Apoio ATMC Moto Rock Bar'],
     prices: ['Antecipado R$10 · na hora R$20', 'Coletado: antecipado R$5 · na hora R$10'],
+    priceFrom: 5,
   },
   {
     id: 'el-ponto',
@@ -55,6 +63,7 @@ export const EVENTS: EventItem[] = [
     flyer: '/media/flyer-el-ponto.jpg',
     lineup: ['Blue Army – cover Aerosmith', 'Tributo CBJR – Charlie Brown Jr.', 'Shop Suit – cover System of a Down'],
     prices: ['Antecipado: homem R$20 · mulher R$10', 'Na hora: homem R$30 · mulher R$20'],
+    priceFrom: 10,
   },
 ]
 

@@ -22,4 +22,5 @@ const siteUrlPlugin = (): Plugin => ({
 
 export default defineConfig({
   plugins: [react(), siteUrlPlugin()],
+  define: { __SITE_URL__: JSON.stringify(siteUrl()) },
 })

@@ -15,6 +15,8 @@ import Footer from './components/Footer'
 import Lightbox, { type LightboxContent } from './components/Lightbox'
 import WhatsFloat from './components/WhatsFloat'
 import MobileBar from './components/MobileBar'
+import Booking from './components/Booking'
+import StructuredData from './components/StructuredData'
 import { useReveal } from './useReveal'
 
 export default function App() {
@@ -37,12 +39,14 @@ export default function App() {
         <Setlist />
         <Agenda onOpen={openImage} />
         <Gallery onOpen={openImage} />
+        <Booking />
         <CallToAction />
         <Visit />
       </main>
       <Footer />
       <WhatsFloat />
       <MobileBar />
+      <StructuredData />
       <Lightbox content={lightbox} onClose={() => setLightbox(null)} />
     </>
   )

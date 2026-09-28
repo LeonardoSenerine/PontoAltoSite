@@ -42,6 +42,10 @@ export default function Privacy() {
           comprar ingresso ou entrar na lista).
         </li>
         <li>
+          <strong>"Quer tocar no Ponto Alto?":</strong> os dados que a banda preenche não ficam salvos
+          no site; eles só entram na mensagem de WhatsApp que a própria banda decide enviar.
+        </li>
+        <li>
           <strong>Mapa do Google:</strong> se você permitir, o mapa é carregado e o Google recebe dados
           de navegação e grava cookies próprios.
         </li>

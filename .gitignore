@@ -5,3 +5,4 @@ SaveClip.App_*
 82223289_*.jpg
 .claude/settings.local.json
 *.tsbuildinfo
+dist-ssr

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Tape from './Tape'
-import { CONTACT, mapsLink, wazeLink, whatsLink } from '../data'
+import { CONTACT, mapsLink, uberLink, wazeLink, whatsLink } from '../data'
 import { setConsent, useConsent } from '../consent'
 
 /** Mapa em tela cheia com o endereço num cartão em forma de ingresso. */
@@ -73,6 +73,7 @@ export default function Visit() {
             <div className="btn-row">
               <a className="btn" href={mapsLink} target="_blank" rel="noopener">Google Maps <span className="btn__arrow">›</span></a>
               <a className="btn btn--ghost" href={wazeLink} target="_blank" rel="noopener">Waze</a>
+              <a className="btn btn--ghost" href={uberLink} target="_blank" rel="noopener">Pedir Uber</a>
             </div>
           </div>
           <div className="visit__stub" aria-hidden="true">

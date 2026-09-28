@@ -8,6 +8,7 @@ const LINKS = [
   { href: '/#agenda', label: 'Agenda' },
   { href: '/#galeria', label: 'Galeria' },
   { href: '/#visite', label: 'Como chegar' },
+  { href: '/#tocar', label: 'Quero tocar aqui' },
 ]
 
 export default function Footer() {

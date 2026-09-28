@@ -1,22 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App'
-import Privacy from './pages/Privacy'
-import Cookies from './pages/Cookies'
-import NotFound from './pages/NotFound'
 import CookieBanner from './components/CookieBanner'
+import { pageFor } from './routes'
 import './styles.css'
 
-// Roteamento simples por caminho: o site tem poucas páginas.
-const ROUTES: Record<string, () => JSX.Element> = {
-  '/': App,
-  '/privacidade': Privacy,
-  '/cookies': Cookies,
-}
+const Page = pageFor(window.location.pathname)
 
-const path = window.location.pathname.replace(/\/+$/, '') || '/'
-const Page = ROUTES[path] ?? NotFound
-
+// O HTML já vem pré-renderizado (scripts/prerender.mjs); aqui o React assume a página.
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Page />

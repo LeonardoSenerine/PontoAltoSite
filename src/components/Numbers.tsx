@@ -9,7 +9,8 @@ const ITEMS = [
 
 function CountUp({ to }: { to: number }) {
   const ref = useRef<HTMLSpanElement>(null)
-  const [n, setN] = useState(0)
+  // Começa no valor final: é o que aparece no HTML pré-renderizado e sem JavaScript.
+  const [n, setN] = useState(to)
 
   useEffect(() => {
     const el = ref.current
