@@ -89,7 +89,7 @@ export default function Hero() {
 
           <div className="hero__video">
             {desktop ? (
-              <video autoPlay muted loop playsInline poster="/media/show-coberto.jpg">
+              <video autoPlay muted loop playsInline poster="/media/video-6.jpg">
                 <source src="/media/video-6.mp4" type="video/mp4" />
               </video>
             ) : (

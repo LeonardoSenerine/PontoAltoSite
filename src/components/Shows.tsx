@@ -64,6 +64,7 @@ export default function Shows({ onPlay }: Props) {
                 key={show.src}
                 ref={videoRef}
                 src={show.src}
+                poster={show.src.replace('.mp4', '.jpg')}
                 muted={muted}
                 loop
                 playsInline
@@ -81,7 +82,7 @@ export default function Shows({ onPlay }: Props) {
                   aria-pressed={i === active}
                 >
                   <span className="track__thumb">
-                    <video src={`${s.src}#t=1`} muted playsInline preload="metadata" />
+                    <img src={s.src.replace('.mp4', '.jpg')} alt="" loading="lazy" />
                   </span>
                   <span className="track__text">
                     <strong>{s.title}</strong>
